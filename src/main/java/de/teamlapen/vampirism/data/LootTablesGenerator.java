@@ -23,15 +23,11 @@ import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.CarrotBlock;
-import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.storage.loot.*;
 import net.minecraft.world.level.storage.loot.entries.EmptyLootItem;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -44,7 +40,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
@@ -329,9 +324,11 @@ public class LootTablesGenerator extends LootTableProvider {
             this.add(ModBlocks.THRONE.get(), (p_218567_0_) -> createSinglePropConditionTable(p_218567_0_, VampirismSplitBlock.PART, VampirismSplitBlock.Part.MAIN));
             this.dropSelf(ModBlocks.ALCHEMY_TABLE.get());
             this.add(ModBlocks.DIAGONAL_CURSED_BARK.get(), noDrop());
-            this.dropSelf(ModBlocks.CURSED_ROOTED_DIRT.get());
+            this.add(ModBlocks.REMAINS.get(), noDrop());
+            this.add(ModBlocks.ACTIVE_VULNERABLE_REMAINS.get(), noDrop());
+            this.add(ModBlocks.INCAPACITATED_VULNERABLE_REMAINS.get(), noDrop());
+            this.add(ModBlocks.VULNERABLE_REMAINS.get(), noDrop());
             this.add(ModBlocks.CURSED_HANGING_ROOTS.get(), ModBlockLootTables::createShearsOnlyDrop);
-            this.dropOther(ModBlocks.VULNERABLE_CURSED_ROOTED_DIRT.get(), ModBlocks.CURSED_ROOTED_DIRT.get());
             this.add(ModBlocks.MOTHER.get(), noDrop());
         }
 
