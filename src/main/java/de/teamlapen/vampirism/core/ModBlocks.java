@@ -110,7 +110,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> CURSED_SPRUCE_PLANKS = registerWithItem("cursed_spruce_planks", () -> new Block(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.CRIMSON_HYPHAE).strength(2.0F, 3.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<LogBlock> STRIPPED_DARK_SPRUCE_LOG = registerWithItem("stripped_dark_spruce_log", () -> new LogBlock(MaterialColor.COLOR_BLACK, MaterialColor.COLOR_GRAY));
     public static final RegistryObject<LogBlock> STRIPPED_CURSED_SPRUCE_LOG = registerWithItem("stripped_cursed_spruce_log", () -> new LogBlock(MaterialColor.COLOR_BLACK, MaterialColor.CRIMSON_HYPHAE));
-    public static final RegistryObject<LogBlock> DARK_SPRUCE_LOG = registerWithItem("dark_spruce_log", () -> new StrippableLogBlock(MaterialColor.COLOR_BLACK, MaterialColor.COLOR_BLACK, STRIPPED_DARK_SPRUCE_LOG));
+    public static final RegistryObject<LogBlock> DARK_SPRUCE_LOG = registerWithItem("dark_spruce_log", () -> new DarkSpruceLogs(STRIPPED_DARK_SPRUCE_LOG));
     public static final RegistryObject<CursedSpruceBlock> CURSED_SPRUCE_LOG_CURED = registerWithItem("cursed_spruce_log_cured", () -> new CursedSpruceBlock(STRIPPED_CURSED_SPRUCE_LOG));
     public static final RegistryObject<LogBlock> CURSED_SPRUCE_LOG = registerWithItem("cursed_spruce_log", () -> new CursedSpruceBlock(STRIPPED_CURSED_SPRUCE_LOG, CURSED_SPRUCE_LOG_CURED));
     public static final RegistryObject<SaplingBlock> DARK_SPRUCE_SAPLING = registerWithItem("dark_spruce_sapling", () -> new SaplingBlock(new DarkSpruceTreeGrower(), BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_BLACK).noCollission().randomTicks().instabreak().sound(SoundType.GRASS)));
