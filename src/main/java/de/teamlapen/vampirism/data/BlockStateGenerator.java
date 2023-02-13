@@ -268,6 +268,7 @@ public class BlockStateGenerator extends BlockStateProvider {
         simpleBlock(ModBlocks.VULNERABLE_REMAINS.get(), models().cubeAll("vulnerable_remains", modLoc("block/vulnerable_remains")));
         simpleBlock(ModBlocks.ACTIVE_VULNERABLE_REMAINS.get(), models().cubeAll("active_vulnerable_remains", modLoc("block/active_vulnerable_remains")));
         simpleBlock(ModBlocks.CURSED_HANGING_ROOTS.get(), models().cross("cursed_hanging_roots", modLoc("block/cursed_hanging_roots")));
+        simpleBlock(ModBlocks.MOTHER.get(), models().cubeAll("mother", modLoc("block/mother")));
 
     }
 

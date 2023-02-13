@@ -82,6 +82,7 @@ public class ItemModelGenerator extends BaseItemModelGenerator {
             add(ModBlocks.VULNERABLE_REMAINS.get());
             add(ModBlocks.INCAPACITATED_VULNERABLE_REMAINS.get());
             add(ModBlocks.CURSED_HANGING_ROOTS.get());
+            add(ModBlocks.MOTHER.get());
         }};
         Set<Item> items = new HashSet<>() {{
             add(ModItems.HUNTER_COAT_CHEST_NORMAL.get());
