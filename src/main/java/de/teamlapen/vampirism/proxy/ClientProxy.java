@@ -3,6 +3,7 @@ package de.teamlapen.vampirism.proxy;
 import de.teamlapen.vampirism.api.VampirismAPI;
 import de.teamlapen.vampirism.api.client.VIngameOverlays;
 import de.teamlapen.vampirism.api.general.BloodConversionRegistry;
+import de.teamlapen.vampirism.blockentity.FogDiffuserBlockEntity;
 import de.teamlapen.vampirism.blockentity.GarlicDiffuserBlockEntity;
 import de.teamlapen.vampirism.blocks.CoffinBlock;
 import de.teamlapen.vampirism.blocks.LogBlock;
@@ -84,6 +85,11 @@ public class ClientProxy extends CommonProxy {
     @Override
     public void displayGarlicBeaconScreen(GarlicDiffuserBlockEntity tile, Component title) {
         openScreen(new GarlicDiffuserScreen(tile, title));
+    }
+
+    @Override
+    public void displayFogDiffuserScreen(FogDiffuserBlockEntity tile, Component title) {
+        openScreen(new FogDiffuserScreen(tile, title));
     }
 
     @Override

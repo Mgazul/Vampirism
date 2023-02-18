@@ -1,7 +1,6 @@
 package de.teamlapen.vampirism.core;
 
 import de.teamlapen.vampirism.REFERENCE;
-import de.teamlapen.vampirism.VampirismMod;
 import de.teamlapen.vampirism.blocks.BushBlock;
 import de.teamlapen.vampirism.blocks.*;
 import de.teamlapen.vampirism.util.BlockVoxelshapes;
@@ -159,6 +158,7 @@ public class ModBlocks {
     public static final RegistryObject<CoffinBlock> COFFIN_RED = registerWithItem("coffin_red", () -> new CoffinBlock(DyeColor.RED));
     public static final RegistryObject<CoffinBlock> COFFIN_BLACK = registerWithItem("coffin_black", () -> new CoffinBlock(DyeColor.BLACK));
     public static final RegistryObject<AlchemyTableBlock> ALCHEMY_TABLE = registerWithItem("alchemy_table", AlchemyTableBlock::new);
+    public static final RegistryObject<FogDiffuserBlock> FOG_DIFFUSER = registerWithItem("fog_diffuser", () -> new FogDiffuserBlock(BlockBehaviour.Properties.of(Material.STONE).strength(3.5F).sound(SoundType.STONE)));
 
 
     /**
