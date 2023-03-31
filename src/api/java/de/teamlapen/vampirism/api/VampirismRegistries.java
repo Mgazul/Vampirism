@@ -2,6 +2,7 @@ package de.teamlapen.vampirism.api;
 
 import com.google.common.base.Suppliers;
 import de.teamlapen.vampirism.api.entity.actions.IEntityAction;
+import de.teamlapen.vampirism.api.entity.convertible.IConvertingHandler;
 import de.teamlapen.vampirism.api.entity.minion.IMinionTask;
 import de.teamlapen.vampirism.api.entity.player.actions.IAction;
 import de.teamlapen.vampirism.api.entity.player.refinement.IRefinement;
@@ -32,6 +33,7 @@ public class VampirismRegistries {
     public static final ResourceKey<Registry<IRefinement>> REFINEMENT_ID = key("vampirism:refinement");
     public static final ResourceKey<Registry<IRefinementSet>> REFINEMENT_SET_ID = key("vampirism:refinement_set");
     public static final ResourceKey<Registry<IOil>> OILS_ID = key("vampirism:oil");
+    public static final ResourceKey<Registry<IConvertingHandler<?>>> CONVERTING_HANDLER_ID = key("vampirism:converting_handler");
 
     public static final Supplier<IForgeRegistry<ISkill<?>>> SKILLS = Suppliers.memoize(() -> RegistryManager.ACTIVE.getRegistry(SKILLS_ID));
     public static final Supplier<IForgeRegistry<IAction<?>>> ACTIONS = Suppliers.memoize(() -> RegistryManager.ACTIVE.getRegistry(ACTIONS_ID));
@@ -41,6 +43,7 @@ public class VampirismRegistries {
     public static final Supplier<IForgeRegistry<IRefinement>> REFINEMENTS = Suppliers.memoize(() -> RegistryManager.ACTIVE.getRegistry(REFINEMENT_ID));
     public static final Supplier<IForgeRegistry<IRefinementSet>> REFINEMENT_SETS = Suppliers.memoize(() -> RegistryManager.ACTIVE.getRegistry(REFINEMENT_SET_ID));
     public static final Supplier<IForgeRegistry<IOil>> OILS = Suppliers.memoize(() -> RegistryManager.ACTIVE.getRegistry(OILS_ID));
+    public static final Supplier<IForgeRegistry<IConvertingHandler<?>>> CONVERTING_HANDLERS = Suppliers.memoize(() -> RegistryManager.ACTIVE.getRegistry(CONVERTING_HANDLER_ID));
 
     private static <T> @NotNull ResourceKey<Registry<T>> key(@NotNull String name) {
         return ResourceKey.createRegistryKey(new ResourceLocation(name));
