@@ -36,6 +36,7 @@
     "client.AgeableModelAccessor",
     "client.BossOverlayGuiAccessor",
     "client.LevelRendererMixin",
+    "client.LivingEntityRendererAccessor",
     "client.SheetsMixin",
     "client.VillagerModelAccessor"
   ],
