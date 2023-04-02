@@ -1,7 +1,8 @@
 package de.teamlapen.vampirism.core;
 
+import com.mojang.serialization.Codec;
 import de.teamlapen.vampirism.api.entity.actions.IEntityAction;
-import de.teamlapen.vampirism.api.entity.convertible.IConvertingHandler;
+import de.teamlapen.vampirism.api.entity.convertible.Converter;
 import de.teamlapen.vampirism.api.entity.minion.IMinionTask;
 import de.teamlapen.vampirism.api.entity.player.actions.IAction;
 import de.teamlapen.vampirism.api.entity.player.refinement.IRefinement;
@@ -32,7 +33,7 @@ public class ModRegistries {
     static final DeferredRegister<IRefinement> DEFERRED_REFINEMENTS = DeferredRegister.create(REFINEMENT_ID, REFINEMENT_ID.location().getNamespace());
     static final DeferredRegister<IRefinementSet> DEFERRED_REFINEMENT_SETS = DeferredRegister.create(REFINEMENT_SET_ID, REFINEMENT_SET_ID.location().getNamespace());
     static final DeferredRegister<IOil> DEFERRED_OILS = DeferredRegister.create(OILS_ID, OILS_ID.location().getNamespace());
-    static final DeferredRegister<IConvertingHandler<?>> DEFERRED_CONVERTING_HANDLERS = DeferredRegister.create(CONVERTING_HANDLER_ID, CONVERTING_HANDLER_ID.location().getNamespace());
+    static final DeferredRegister<Codec<? extends Converter>> DEFERRED_ENTITY_CONVERTER = DeferredRegister.create(ENTITY_CONVERTER_ID, ENTITY_CONVERTER_ID.location().getNamespace());
 
     public static final Supplier<IForgeRegistry<ISkill<?>>> SKILLS = DEFERRED_SKILLS.makeRegistry(RegistryBuilder::new);
     public static final Supplier<IForgeRegistry<IAction<?>>> ACTIONS = DEFERRED_ACTIONS.makeRegistry(RegistryBuilder::new);
@@ -42,7 +43,7 @@ public class ModRegistries {
     public static final Supplier<IForgeRegistry<IRefinement>> REFINEMENTS = DEFERRED_REFINEMENTS.makeRegistry(RegistryBuilder::new);
     public static final Supplier<IForgeRegistry<IRefinementSet>> REFINEMENT_SETS = DEFERRED_REFINEMENT_SETS.makeRegistry(RegistryBuilder::new);
     public static final Supplier<IForgeRegistry<IOil>> OILS = DEFERRED_OILS.makeRegistry(RegistryBuilder::new);
-    public static final Supplier<IForgeRegistry<IConvertingHandler<?>>> CONVERTING_HANDLERS = DEFERRED_CONVERTING_HANDLERS.makeRegistry(RegistryBuilder::new);
+    public static final Supplier<IForgeRegistry<Codec<? extends Converter>>> ENTIITY_CONVERTER = DEFERRED_ENTITY_CONVERTER.makeRegistry(RegistryBuilder::new);
 
     public static final RegistrySetBuilder DATA_BUILDER = new RegistrySetBuilder()
             .add(Registries.BIOME, ModBiomes::createBiomes)
@@ -65,7 +66,7 @@ public class ModRegistries {
         DEFERRED_REFINEMENTS.register(bus);
         DEFERRED_REFINEMENT_SETS.register(bus);
         DEFERRED_OILS.register(bus);
-        DEFERRED_CONVERTING_HANDLERS.register(bus);
+        DEFERRED_ENTITY_CONVERTER.register(bus);
     }
 
 }
