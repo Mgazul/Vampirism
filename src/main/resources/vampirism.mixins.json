@@ -25,10 +25,12 @@
     "ProcessorListsAccessor",
     "RecipeManagerAccessor",
     "RegistriesDatapackGeneratorAccessor",
+    "ReloadableServerResourcesAccessor",
     "ShapedRecipeAccessor",
     "ShapedRecipeBuilderAccessor",
     "ShapelessRecipeBuilderAccessor",
     "StructuresAccessor",
+    "TagManagerAccessor",
     "TileEntityTypeAccessor",
     "VanillaBlockLootAccessor"
   ],

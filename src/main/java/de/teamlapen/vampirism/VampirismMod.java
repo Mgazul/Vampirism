@@ -21,6 +21,7 @@ import de.teamlapen.vampirism.config.BloodValues;
 import de.teamlapen.vampirism.config.VampirismConfig;
 import de.teamlapen.vampirism.core.*;
 import de.teamlapen.vampirism.data.reloadlistener.SingleJigsawGeneration;
+import de.teamlapen.vampirism.data.reloadlistener.SundamageReloadListener;
 import de.teamlapen.vampirism.entity.ExtendedCreature;
 import de.teamlapen.vampirism.entity.ModEntityEventHandler;
 import de.teamlapen.vampirism.entity.SundamageRegistry;
@@ -42,6 +43,8 @@ import de.teamlapen.vampirism.entity.player.vampire.VampirePlayer;
 import de.teamlapen.vampirism.items.VampireRefinementItem;
 import de.teamlapen.vampirism.items.crossbow.CrossbowArrowHandler;
 import de.teamlapen.vampirism.misc.VampirismLogger;
+import de.teamlapen.vampirism.mixin.ReloadableServerResourcesAccessor;
+import de.teamlapen.vampirism.mixin.TagManagerAccessor;
 import de.teamlapen.vampirism.modcompat.IMCHandler;
 import de.teamlapen.vampirism.modcompat.terrablender.TerraBlenderCompat;
 import de.teamlapen.vampirism.network.ModPacketDispatcher;
@@ -61,8 +64,10 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AddReloadListenerEvent;
+import net.minecraftforge.event.OnDatapackSyncEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.server.ServerAboutToStartEvent;
+import net.minecraftforge.event.server.ServerStoppedEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
@@ -125,6 +130,8 @@ public class VampirismMod {
         MinecraftForge.EVENT_BUS.addListener(this::onCommandsRegister);
         MinecraftForge.EVENT_BUS.addListener(this::onAddReloadListenerEvent);
         MinecraftForge.EVENT_BUS.addListener(this::onServerStarting);
+        MinecraftForge.EVENT_BUS.addListener(this::onServerStopped);
+        MinecraftForge.EVENT_BUS.addListener(this::onDataPackSyncEvent);
 
         VampirismConfig.init();
 
@@ -147,6 +154,7 @@ public class VampirismMod {
         event.addListener(SkillTreeManager.getInstance());
         event.addListener(new BloodValues());
         event.addListener(new SingleJigsawGeneration());
+        event.addListener(new SundamageReloadListener(((TagManagerAccessor) ((ReloadableServerResourcesAccessor) event.getServerResources()).getTagManager()).getRegistryAccess()));
     }
 
     public void onCommandsRegister(@NotNull RegisterCommandsEvent event) {
@@ -184,6 +192,15 @@ public class VampirismMod {
 
     private void onServerStarting(@NotNull ServerAboutToStartEvent event) {
         VanillaStructureModifications.addVillageStructures(event.getServer().registryAccess());
+        ((SundamageRegistry) VampirismAPI.sundamageRegistry()).initServer(event.getServer().registryAccess());
+    }
+
+    private void onServerStopped(ServerStoppedEvent event) {
+        ((SundamageRegistry) VampirismAPI.sundamageRegistry()).removeServer();
+    }
+
+    private void onDataPackSyncEvent(OnDatapackSyncEvent event) {
+        ((SundamageRegistry) VampirismAPI.sundamageRegistry()).updateClient(event.getPlayer());
     }
 
     private void finalizeConfiguration(RegisterEvent event) {
