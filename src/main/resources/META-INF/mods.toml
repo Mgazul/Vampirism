@@ -13,7 +13,7 @@ license = "LGPL-3.0"
     description="Allows you to become a vampire"
     displayURL="https://vampirism.maxanier.de"
     logoFile="logo.png"
-    updateJSONURL="https://maxanier.de/projects/vampirism/versions.json"
+    updateJSONURL="https://api.modrinth.com/updates/vampirism/forge_updates.json"
     [[dependencies.vampirism]]
         modId="forge"
         mandatory=true
